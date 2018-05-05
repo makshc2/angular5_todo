@@ -5,7 +5,6 @@ import { Task } from '../models/Task';
 @Injectable()
 export class JsonplaceholderService {
 
-
   configUrl = 'https://jsonplaceholder.typicode.com/todos/';
 
   constructor(
