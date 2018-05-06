@@ -7,6 +7,7 @@ import { Task } from '../models/Task';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
+
 export class ListComponent implements OnInit {
 
   tasks: Task[];
@@ -25,4 +26,13 @@ export class ListComponent implements OnInit {
    });
   }
 
+  deleteTask(id) {
+    this.server.deleteTask(id).subscribe(data => {
+      this.tasks = this.tasks.filter( task => task.id !== id);
+    });
+  }
+
+  identify(index) {
+    return index;
+  }
 }
