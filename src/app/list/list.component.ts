@@ -13,13 +13,13 @@ export class ListComponent implements OnInit {
   tasks: Task[];
 
   constructor(
-    public server: JsonplaceholderService
+      public server: JsonplaceholderService
   ) { }
 
   ngOnInit() {
-   this.server.getTasks().subscribe(data => {
-     if (data) {
-       this.tasks = data;
+    this.server.getTasks().subscribe(data => {
+      if (data) {
+        this.tasks = data;
      }
    }, error => {
           console.log(error);
@@ -28,7 +28,13 @@ export class ListComponent implements OnInit {
 
   deleteTask(id) {
     this.server.deleteTask(id).subscribe(data => {
-      this.tasks = this.tasks.filter( task => task.id !== id);
+        this.tasks = this.tasks.filter( task => task.id !== id);
+    });
+  }
+
+  doneTask(id, completed) {
+    this.server.doneTask(id, completed).subscribe( data => {
+      console.log(data);
     });
   }
 

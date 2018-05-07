@@ -8,12 +8,11 @@ export class JsonplaceholderService {
   configUrl = 'https://jsonplaceholder.typicode.com/todos/';
 
   constructor(
-    public  http: HttpClient
-  ) {
-  }
+      public  http: HttpClient
+  ) { }
 
   getTasks() {
-    return this.http.get(this.configUrl);
+      return this.http.get<Task[]>(this.configUrl);
   }
 
   addTask(task: Task) {
@@ -22,13 +21,13 @@ export class JsonplaceholderService {
       });
   }
 
-  // doneTask(completed: boolean) {
-  //   return this.http.patch(this.configUrl, {
-  //
-  //   });
-  // }
+  doneTask(id: number, completed: boolean) {
+      return this.http.patch(this.configUrl + id, {
+        body: completed
+    });
+  }
 
   deleteTask(id: number) {
-    return this.http.delete(this.configUrl + id);
+      return this.http.delete(this.configUrl + id);
   }
 }

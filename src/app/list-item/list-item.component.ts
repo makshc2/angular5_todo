@@ -9,7 +9,9 @@ import { Task } from '../models/Task';
 })
 export class ListItemComponent implements OnInit {
   @Input() task: Task;
-  @Output() delete = new EventEmitter(); edit = new EventEmitter();
+  @Output() delete = new EventEmitter();
+  @Output() done = new EventEmitter();
+
   constructor(
     public server: JsonplaceholderService
   ) { }
@@ -17,7 +19,12 @@ export class ListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  doneTask() {
+    this.done.emit(this.task.id);
+  }
+
   deleteTask() {
     this.delete.emit(this.task.id);
   }
+
 }

@@ -1,8 +1,13 @@
-<div class="card mt-3" [ngClass]="{'bg-success text-white': task.completed}">
+<div class="card mt-3" [ngClass]="{ 'bg-success text-white': task.completed }">
   <div class="card-body">
-    <p class="card-text">{{task.title}}</p>
+    <p class="card-text">{{ task.title }}</p>
     <button class="btn btn-primary">Edit</button>
     <button class="btn btn-danger" (click)="deleteTask()">Delete</button>
-    <button class="btn btn-primary">Done</button>
+    <button class="btn"
+            [ngClass]="{ 'btn-success': !task.completed,
+                        'btn-primary': task.completed }"
+                        (click)="task.completed = !task.completed; doneTask(task.id)">
+                        {{ task.completed ? 'Undone' : 'Done' }}
+    </button>
   </div>
 </div>
