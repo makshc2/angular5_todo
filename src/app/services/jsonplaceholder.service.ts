@@ -23,7 +23,7 @@ export class JsonplaceholderService {
 
   doneTask(id: number, completed: boolean) {
       return this.http.patch(this.configUrl + id, {
-        body: completed
+        completed
     });
   }
 
