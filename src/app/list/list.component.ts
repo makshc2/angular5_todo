@@ -34,7 +34,7 @@ export class ListComponent implements OnInit {
 
   doneTask(id, completed) {
     this.server.doneTask(id, completed).subscribe( data => {
-      console.log(data);
+      return this.tasks;
     });
   }
 
