@@ -8,23 +8,31 @@ import { Task } from '../models/Task';
   styleUrls: ['./list-item.component.css']
 })
 export class ListItemComponent implements OnInit {
+  isEdit: boolean;
   @Input() task: Task;
   @Output() delete = new EventEmitter();
   @Output() done = new EventEmitter();
+  @Output() edit = new EventEmitter();
 
   constructor(
     public server: JsonplaceholderService
   ) { }
 
   ngOnInit() {
+    this.server.canceledTask.subscribe();
   }
 
   doneTask() {
-    this.done.emit(this.task.id);
+    this.done.emit({id: this.task.id, completed: this.task.completed});
   }
 
   deleteTask() {
     this.delete.emit(this.task.id);
+  }
+
+  editTask() {
+    const updateTask = Object.assign({}, this.task);
+    this.edit.emit(updateTask);
   }
 
 }

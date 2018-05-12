@@ -8,6 +8,8 @@ import { ListItemComponent } from './list-item/list-item.component';
 import { JsonplaceholderService } from './services/jsonplaceholder.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     FormComponent,
     ListComponent,
-    ListItemComponent
+    ListItemComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [JsonplaceholderService],
   bootstrap: [AppComponent]
