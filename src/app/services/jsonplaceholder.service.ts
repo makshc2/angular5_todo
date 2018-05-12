@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Task } from '../models/Task';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-@Injectable()
+@Injectable ()
 export class JsonplaceholderService {
 
   configUrl = 'https://jsonplaceholder.typicode.com/todos/';
