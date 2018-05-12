@@ -1,7 +1,7 @@
 <div class="card mt-3" [ngClass]="{ 'bg-success text-white': task.completed, 'bg-warning': isEdit }">
   <div class="card-body">
     <p class="card-text">{{ task.title }}</p>
-    <button class="btn btn-primary" (click)="editTask()">Edit</button>
+    <button class="btn btn-primary" (click)="isEdit = !isEdit; editTask()">Edit</button>
     <button class="btn btn-danger" (click)="deleteTask()">Delete</button>
     <button class="btn"
             [ngClass]="{ 'btn-success': !task.completed,
