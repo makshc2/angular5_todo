@@ -83,10 +83,12 @@ export class FormComponent implements OnInit {
       });
     });
   }
+
   cancelEdit() {
     this.isEdit = false;
     this.title = '';
     this.currentTaskId = '0';
     this.server.emitCancelTask();
   }
+
 }

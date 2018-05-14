@@ -19,8 +19,8 @@ export class ListItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.server.canceledTask.subscribe(data => {
-      if (data) {
+    this.server.canceledTask.subscribe( data => {
+      if (data === this.isEdit) {
         this.isEdit = !this.isEdit;
       }
     });
