@@ -18,6 +18,8 @@ export class JsonplaceholderService {
   updatingTask = this.updateTaskSource.asObservable();
   private cancelTaskSource = new BehaviorSubject(false);
   canceledTask = this.cancelTaskSource.asObservable();
+  private checkEditingTaskSource = new BehaviorSubject(false);
+  checkEditingTask = this.checkEditingTaskSource.asObservable();
 
   constructor(
       public  http: HttpClient
@@ -53,6 +55,10 @@ export class JsonplaceholderService {
 
   emitEditTask(task: Task) {
     this.editTaskSource.next(task);
+  }
+
+  emitCheckEditingTask(isEdit) {
+    this.checkEditingTaskSource.next(isEdit);
   }
 
   editTask(task: Task) {

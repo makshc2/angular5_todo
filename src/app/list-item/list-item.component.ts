@@ -24,6 +24,9 @@ export class ListItemComponent implements OnInit {
         this.isEdit = !this.isEdit;
       }
     });
+    this.server.checkEditingTask.subscribe(data => {
+      this.isEdit = data;
+    });
   }
 
   doneTask() {
@@ -35,6 +38,8 @@ export class ListItemComponent implements OnInit {
   }
 
   editTask() {
+    this.server.emitCheckEditingTask(false);
+    this.isEdit = true;
     const updateTask = Object.assign({}, this.task);
     this.edit.emit(updateTask);
   }
